@@ -1,0 +1,31 @@
+platform :ios do
+  desc 'Run unit tests on iPhone 7, run swift lint check, CI runs this after every commit to master.'
+  lane :jet do
+      clear_build_files
+      lint
+      run_tests(destination_names: ['iPhone 8'])
+  end
+
+  desc 'Run unit tests on multiple device/iOS combinations, run swift lint check, CI runs this every night.'
+  lane :extended_unit_test do
+      clear_build_files
+      lint
+      run_tests(destination_names: ['iPhone X', 'iPhone 8', 'iPhone 7', 'iPhone 6 (9.3)'])
+  end
+
+  desc 'Does a static analysis of the project. Configure the options in .swiftlint.yml'
+  private_lane :lint do
+    swiftlint(
+      output_file: "report.xml",
+      reporter: "checkstyle",
+      ignore_exit_status: false
+    )
+  end
+
+  private_lane :run_tests do |options|
+      scan_options = {
+        :devices => options[:destination_names]
+      }
+      scan(scan_options)
+  end
+end

@@ -1,0 +1,30 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+import 'test.fastfile'
+import 'framework.fastfile'
+
+opt_out_usage
+
+default_platform(:ios)
+
+platform :ios do
+  desc 'Prepare carthage env'
+  lane :prepare do
+    sh "cd ..; carthage update --platform iOS"
+  end
+
+  desc 'Clear build files.'
+  lane :clear_build_files do
+    sh "rm report.xml"
+    sh "rm -rf ~/Library/Developer/Xcode/DerivedData/*"
+  end
+end
