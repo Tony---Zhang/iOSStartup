@@ -15,6 +15,7 @@
 		10604FB9204913DF00DC13E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10604FB7204913DF00DC13E4 /* LaunchScreen.storyboard */; };
 		10604FC4204913DF00DC13E4 /* StartupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10604FC3204913DF00DC13E4 /* StartupTests.swift */; };
 		10604FCF204913DF00DC13E4 /* StartupUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10604FCE204913DF00DC13E4 /* StartupUITests.swift */; };
+		10604FDE2049240D00DC13E4 /* AFNetworking.framework.dSYM in Frameworks */ = {isa = PBXBuildFile; fileRef = 10604FDD2049240D00DC13E4 /* AFNetworking.framework.dSYM */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		10604FCA204913DF00DC13E4 /* StartupUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StartupUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		10604FCE204913DF00DC13E4 /* StartupUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupUITests.swift; sourceTree = "<group>"; };
 		10604FD0204913DF00DC13E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10604FDD2049240D00DC13E4 /* AFNetworking.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = AFNetworking.framework.dSYM; path = Carthage/Build/iOS/AFNetworking.framework.dSYM; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10604FDE2049240D00DC13E4 /* AFNetworking.framework.dSYM in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +86,7 @@
 				10604FC2204913DF00DC13E4 /* StartupTests */,
 				10604FCD204913DF00DC13E4 /* StartupUITests */,
 				10604FAA204913DF00DC13E4 /* Products */,
+				10604FDC2049240D00DC13E4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,6 +132,14 @@
 			path = StartupUITests;
 			sourceTree = "<group>";
 		};
+		10604FDC2049240D00DC13E4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				10604FDD2049240D00DC13E4 /* AFNetworking.framework.dSYM */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,6 +150,7 @@
 				10604FA5204913DF00DC13E4 /* Sources */,
 				10604FA6204913DF00DC13E4 /* Frameworks */,
 				10604FA7204913DF00DC13E4 /* Resources */,
+				10604FDF2049242C00DC13E4 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -256,6 +269,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		10604FDF2049242C00DC13E4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/AFNetworking.framework",
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/AFNetworking.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		10604FA5204913DF00DC13E4 /* Sources */ = {
