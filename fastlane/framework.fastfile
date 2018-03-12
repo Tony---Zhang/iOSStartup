@@ -3,14 +3,14 @@ platform :ios do
   desc 'Debug Production and copy into `fastlane/build/debug`'
   lane :debug_sdk do
     jet
-    match(git_url: "***/certificates.git",type: "adhoc",readonly: true, app_identifier:"com.thoughtworks.CMBGold")
+    match(git_url: "***/certificates.git",type: "adhoc",readonly: true, app_identifier:"**identifier")
     gym(clean:true, configuration:"Debug", export_method:"ad-hoc", output_directory:"./fastlane/build/debug", scheme:"target_name",include_bitcode:true)
   end
 
   desc 'Release Production and copy into `fastlane/build/release`'
   lane :release_production_sdk do |options|
     jet
-    match(git_url: "***/certificates.git",type: "adhoc",readonly: true, app_identifier:"com.thoughtworks.CMBGold")
+    match(git_url: "***/certificates.git",type: "adhoc",readonly: true, app_identifier:"**identifier")
     gym(clean:true, configuration:"Release", export_method:"ad-hoc", output_directory:"./fastlane/build/release", scheme:"target_name",include_bitcode:true)
   end
 end
